@@ -132,20 +132,21 @@ def main():
     for line in inf.readlines():
 
         # Strip off spaces at the ends of the line (either beginning or
-        # end), hint: use the "strip()" method
+        # end) and lower-case the line, but do it in only one line, hint:
+        # use the "strip()" method and the "lower()" method and chain them
+        # together
         line = # FILL IN
         # Note: The line above starts off with "line = ...". This
         # will just change the value of the "line" variable, so we can
-        # keep reusing the same name. Although, obviously, once it's
-        # been changed, its original value can't be recovered (unless
-        # you specifically save it to a different variable, for
-        # example).
+        # keep reusing the same name and not need to create new variables
+        # for each step. Although, obviously, once it's been changed, its
+        # original value can't be recovered (unless you specifically save
+        # it to a different variable, for example).
 
         # Split line on whitespace to get actual words, hint: use the
         # "split()" method
-        line = # FILL IN
-
-        # Lower-case the line (why is this necessary? think about why)
+        # Note: This will turn the string into a list of strings, so,
+        # after executing, "line" will be a list of strings, not a string.
         line = # FILL IN
 
         # Add words to list of words
