@@ -1,4 +1,5 @@
 #/bin/python
+from __future__ import print_function
 
 # Main idea: Count the words in a file and make a frequency distribution
 # and then print out a list of the top 20 words and their frequencies
@@ -65,7 +66,8 @@ def print_most_common(freq_dist):
 
     # Call "get_sorted_word_freqs" with the correct parameters (is this one
     # the one where the "reverse" parameter has to be specified or is it
-    # the other one?)
+    # the other one?) AND REMEMBER TO PRINT OUT THE VALUES (use syntax that
+    # can be read by either Python using the print() function)
     # Hint: Remember to use the "freq_dist" parameter that gets passed
     # in to this function!
     # FILL IN
@@ -81,7 +83,9 @@ def print_least_common(freq_dist):
     :returns: None
     """
 
-    # Call "get_sorted_word_freqs" with the correct parameters
+    # Call "get_sorted_word_freqs" with the correct parameters AND
+    # REMEMBER TO PRINT OUT THE VALUES (use syntax that can be read by
+    # either Python using the print() function)
     # FILL IN
 
 
