@@ -16,7 +16,7 @@
     - As elsewhere, it might be best to make a copy of the script and call it something else and run that script file instead.
 
 3. Processing text files and computing features and compiling a spreadsheet; an introduction to object-oriented programming (for better or worse)
-    - Files: `text_processor.py` (Python script) and a bunch of text files (`pride-and-prejudice.txt`, `alices_adventures_in_wonderland.txt`, `dracula.txt`, emma.txt`, `metamorphosis.txt`, `war_and_peace.txt`, `beowulf.txt`, `dubliners.txt`, `heart_of_darkness.txt`, and `ulysses.txt`)
+    - Files: `text_processor.py` (Python script) and a bunch of text files (`pride-and-prejudice.txt`, `alices_adventures_in_wonderland.txt`, `dracula.txt`, `emma.txt`, `metamorphosis.txt`, `war_and_peace.txt`, `beowulf.txt`, `dubliners.txt`, `heart_of_darkness.txt`, and `ulysses.txt`)
     - `text_processor.py` contains the code for representing `TextProcessing` objects, i.e., an
     object that stores a text and can be used to process it (computing the frequency distribution, the number of words, etc.). It also contains the code for creating a spreadsheet of these text attributes.
     - Task: Process a set of files by calculating attributes such as the number of total words, the number of unique words, and the top 20 most frequent words, and compile this information itno a spreadsheet. Do this for all of the texts specified by the user when the script is run.
