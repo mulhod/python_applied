@@ -3,7 +3,7 @@
 def main():
     # Read in the lines from reviews.txt and lower-case them and then
     # write out the new lines to a new file called reviews_normalized.txt
-    inf = open('reviews.txt')
+    inf = open('data/reviews.txt')
 
     # Store the reviews in a list
     reviews = []

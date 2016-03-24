@@ -619,7 +619,7 @@ def main():
     #    values, get some subsequences, etc.
     linked_list_2 = LinkedList()
 
-    with open('pride-and-prejudice.txt') as text_file:
+    with open('data/pride_and_prejudice.txt') as text_file:
         for line in text_file.readlines():
             
             # Preprocess the line by stripping off whitespace and
