@@ -128,6 +128,37 @@ to the next node, and then the next node and then the final node, which
 contains a value, but has a link that is null (i.e., signifying that
 there is no next node).
 
+Implementing the linked list data structure, however, is not just about
+implementing the structure itself as it is about implementing the ways
+that the data structure can be interacted with. In other words, what use
+is a linked list implementation if you can't add new data to it? Or if
+you can't remove data from it? Or find data in it? As you will see
+below, the bulk of this exercise is implementing the interface between
+the user and the data structure. This will require a thorough
+understanding of the linked list structure, so please study the diagram
+linked to above and study the `Node` class and the idea of a "header"
+node. All of this will be important as we implement the functionality of
+the linked list class.
+
+Before we get to that part, I want to take a second to just outline what
+we need to do (and it's a little open-ended, so bear with me). What do
+you think the main things are that you would need to be able to do in
+order for the linked list implementation to be worthwhile? Well, the
+obvious things that we need to be able to do are inserting and removing
+elements. With Python's `list` type, elements can be `append`ed onto the
+end, `extend`ed from the end, `insert`ed at particular indices,
+`pop`ped off the end, and `del`eted. So, we should implement an `append`
+method that will append an element to the end of the list, perhaps. This
+will allow us to construct a linked list starting with an empty list,
+i.e., just ceate one and then start appending elements to it just like
+with a Python `list`. Let's also implement a `pop` method that removes
+an element from the end of the list and returns its value. In fact,
+maybe we should have two `pop` methods, one for popping elements off the
+end and the other for popping elements off the beginning. Furthermore,
+it would be nice to remove an element from index or to remove a
+particular value wherever it occurs. So, this will all be decided during
+our implementation of the linked list class.
+
 - Notes
   1. In Python classes, most methods/functions will take a first
      argument called `self`. Notice how, when I wanted to make a `Node`
@@ -570,6 +601,88 @@ class LinkedList:
         # now it is the last node). Again, if the list is empty, there
         # is nothing to remove/return. Raise an exception like I did
         # above if the list is empty.
+
+    def delete_index(self, index):
+        """
+        Remove the element at the given index, shifting all succeeding
+        elements back by one. Return True if successful; False
+        otherwise.
+
+        :param index: index (starting from zero) of element to remove
+        :type index: int
+
+        :returns: boolean value confirming that the deletion was
+                  successful (or unsucessful)
+        :rtype: bool
+        """
+
+        ### IMPLEMENT THIS
+        # Hint: Traverse the list like usual, but keep a counter. Stop
+        # at the index before the one we want to remove. Make that
+        # element's `next_node` attribute point to the node following
+        # the element we want to delete (or to the value None if the
+        # element we want to delete happens to be the last element in
+        # the list). Return True. If the index is never reached (i.e.,
+        # because the linked list is too small), return False.
+        # I'll start you off like usual.
+
+        # Return False if the linked list is empty
+        if self.is_empty(): return False
+
+        # Traverse list and stop when counter is one less than `index`
+        i = 0
+        current_node = self.header_node
+        while True:
+
+            # Stop if `i` is one less than `index
+            if i == index - 1:
+                ### FIGURE OUT WHAT TO DO HERE
+                ### Remember to return True when finished
+
+            # Stop if `current_node.next_node` is None (i.e., it's the
+            # last node in the list) and return False since there's no
+            # more nodes to traverse
+            elif ### IMPLEMENT THIS
+                ### IMPLEMENT THIS
+            else:
+                ### Increment `i`
+                ### Change `current_node` to point to next node
+
+    """
+    Just for fun/extra credit, implement a "magic" Python method called
+    `__add__`. When implemented, this will enable one to "add" two
+    linked list instances together in a way similar to the way that one
+    can add together two lists in Python, e.g.:
+
+    >>> [1, 2, 3] + [4, 5, 6]      # [1, 2, 3, 4, 5, 6]
+
+    Implementing the `__add__` method will not just enable this
+    capability in a general sense, it will actually enable a user to use
+    the `+` operator directly two add two linked lists together. Isn't
+    that so awesome?
+    """
+    def __add__(self, linked_list_1, linked_list_2):
+        """
+        Link two linked lists together to make a larger linked list.
+
+        :param linked_list_1: first linked list
+        :type linked_list_1: LinkedList
+        :param linked_list_2: second linked list
+        :type linked_list_2: LinkedList
+
+        :returns: combined linked list
+        :rtype: LinkedList
+        """
+
+        ### IMPLEMENT THIS METHOD. YOU'LL GET NO HELP FROM ME.
+        ### Alright, fine, a little help. Simply create a new linked
+        ### list and then iterate over the first and then the second
+        ### of the linked lists and simply append new values to the new
+        ### linked list until you've traversed both lists. Then, return
+        ### the new linked list. In fact, it should be easy to make this
+        ### method accept any number of parameters, chaining the linked
+        ### lists together and returning a new combined linked list.
+        ### Consider how this might be done.
 
 
 def main():
