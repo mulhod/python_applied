@@ -5,7 +5,14 @@ from __future__ import print_function
 # and then print out a list of the top 20 words and their frequencies
 # and the bottom 20 words and their frequencies.
 
-# Text to read in: pride-and-prejudice.txt
+# Start in the `main` method near the bottom of this file and work your
+# way down until you get to the part that directs you to come back up to
+# the functions/methods defined above the `main` method. It's common for
+# the `main` method to be defined last (but not necessary) and for other
+# functions/variables/etc. that the `main` method uses to be defined
+# before it.
+
+# Text to read in: data/pride_and_prejudice.txt
 
 def get_sorted_word_freqs(freq_dist, n, reverse=False):
     """
