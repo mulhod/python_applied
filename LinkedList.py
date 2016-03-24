@@ -658,17 +658,16 @@ class LinkedList:
 
     Implementing the `__add__` method will not just enable this
     capability in a general sense, it will actually enable a user to use
-    the `+` operator directly two add two linked lists together. Isn't
+    the `+` operator directly to add two linked lists together. Isn't
     that so awesome?
     """
-    def __add__(self, linked_list_1, linked_list_2):
+    def __add__(self, other_linked_list):
         """
-        Link two linked lists together to make a larger linked list.
+        Combine one linked list together with another to make a larger
+        linked list.
 
-        :param linked_list_1: first linked list
-        :type linked_list_1: LinkedList
-        :param linked_list_2: second linked list
-        :type linked_list_2: LinkedList
+        :param other_linked_list: other linked list
+        :type other_linked_list: LinkedList
 
         :returns: combined linked list
         :rtype: LinkedList
@@ -676,13 +675,10 @@ class LinkedList:
 
         ### IMPLEMENT THIS METHOD. YOU'LL GET NO HELP FROM ME.
         ### Alright, fine, a little help. Simply create a new linked
-        ### list and then iterate over the first and then the second
-        ### of the linked lists and simply append new values to the new
-        ### linked list until you've traversed both lists. Then, return
-        ### the new linked list. In fact, it should be easy to make this
-        ### method accept any number of parameters, chaining the linked
-        ### lists together and returning a new combined linked list.
-        ### Consider how this might be done.
+        ### list and then iterate over the linked list (refer to it as
+        ### `self`) and a second linked list and simply append new
+        ### values to the new linked list until you've traversed both
+        ### lists. Then, return the new linked list.
 
 
 def main():
@@ -796,6 +792,7 @@ def main():
     # been removed. Since "him" most definitely occurs in the text, we
     # can skip the check to see if it occurs. If you would like to do
     # this, you get some extra credit and a sticker.
+    print("Removing all instances of the value 'him'...")
     while True:
 
         removed_him = ### FILL IN THIS LINE SO THAT THE WORD `him` IS
@@ -826,6 +823,19 @@ def main():
     part_of_linked_list_2 = ### FILL IN
 
     ### PRINT OUT THE SUBSEQUENCE AND ITS LENGTH
+
+    # Let's try the `delete_index` function: delete the 500th element
+    # of `linked_list_2`
+    ### FILL IN
+
+    print("Length of linked_list_2: {}".format(len(linked_list_2)))
+
+    # Finally, let's add two linked lists together to create a new one
+    # Specifically, add `part_of_linked_list_2` to `linked_list_1` using
+    # the `+` operator and assign the result to `linked_list_3` and
+    # print out the list and its length (like above)
+    linked_list_3 = ### FILL IN
+    ### FILL IN THE CODE FOR PRINTING OUT `linked_list_3` and its length
 
     print("Program complete!")
 
