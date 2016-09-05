@@ -7,7 +7,7 @@ In this exercise, follow along with text below sequentially instead of
 going straight to the `main` method. The real work is going to take
 place outside `main`.
 
-Using the functions defined in normalize_reviews.py, let's process a
+Using the functions defined in `normalize_reviews.py`, let's process a
 bunch of texts and output some stats like how many words there are in
 total, how many unique words there are, and the 10 most common words.
 Keep in mind that by "word", I'm really referring to just a string in
@@ -16,8 +16,8 @@ the text. There's no requirement that it actually be a word.
 For this to work, you will have to have finished the second exercise.
 Furthermore, you will need to change the import line below so that it
 is importing from your own module (unless you just edited the
-normalize_reviews.py file directly instead of creating a new file with a
-slightly different name).
+`normalize_reviews.py` file directly instead of creating a new file
+with a slightly different name).
 """
 ### EDIT THIS LINE BELOW IF YOUR FINISHED VERSION OF
 ### `frequency_distribution.py` IS NAMED SOMETHING ELSE
@@ -35,7 +35,7 @@ Notice how I was able to import from `frequency_distribution` (which is
 just the code that is in `frequency_distribution.py`) as if it were a
 module/library/package (whatever you want to call it). This is just like
 any import from the `sys` package or `re` (regular expressions), etc.
-There's a reason for this: Because it's the same exact thing. Somewhere,
+There's a reason for this: Because it's the same exact thing. Somewhere
 there are files or packages named `sys` or `sys.py` and `re` or `re.py`.
 When importing functions/methods from these packages, it's the same
 exact thing as importing from any module that you create yourself (as
@@ -56,7 +56,7 @@ second one `get_freq_dist_2`:
 >>> from frequency_distribution import get_freq_dist as get_freq_dist_1
 >>> from other_module_that_i_didnt_write import get_freq_dist as get_freq_dist_2
 
-Now, we can use the two functions in our code and maybe compare the
+Now we can use the two functions in our code and maybe compare the
 performance of each or if each gives the same exact output, etc.
 
 This exercise will also introduce you to the concept of arguments. It's
@@ -138,14 +138,15 @@ class TextProcessing:
         """
 
         self.word_list = []
-        
+
         # Iterate over the lines in `self.text` by splitting on
         # newlines ("\n")
         for line in self.text.split('\n'):
 
             # Make `line` lower-case and strip off spaces from either
             # end
-            # Hint: Use "lower()" and "split()"
+            # Hint: Use "lower()" and "strip()" (both with no
+            # arguments).
             line = ### FILL IN
 
             # Discard empty lines
@@ -245,7 +246,6 @@ def main():
 
     # First check if any arguments were provided (other than the script
     # name itself)
-    # NOTE
     if len(sys.argv) == 1:
         raise ValueError("No arguments were passed in!")
 
@@ -260,7 +260,7 @@ def main():
 
     # Let's iterate over the list of arguments (skipping over the
     # first). Notice the brackets following `sys.argv`. Basically, I'm
-    # saying: Use everythinh in `sys.argv` from index 1 and up (i.e.,
+    # saying: Use everything in `sys.argv` from index 1 and up (i.e.,
     # skip over index 0). This is called "slicing". It allows you to
     # work with "slices" of a list instead of the whole thing without
     # needing to create a new list.
@@ -338,7 +338,7 @@ def main():
         output_string = text.text_path
         output_string = output_string + '\t' + str(text.num_words)
         output_string = ### FILL IN THE REST AND REMEMBER THAT THE
-                        ### VALUES NEED TO BE SEPARATED BY A COMMA AS IS
+                        ### VALUES NEED TO BE SEPARATED BY A TAB AS IS
                         ### DONE ABOVE
                         ### NOTE: I had to use `str` to convert the
                         ###       number of words to a string since it

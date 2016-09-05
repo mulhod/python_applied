@@ -23,6 +23,9 @@ def get_sorted_word_freqs(freq_dist, n, reverse=False):
     :type freq_dist: dict
     :param n: number of pairs to return
     :type n: int
+    :param reverse: start from the back end of the list of ranked
+                    word/frequency items
+    :type reverse: bool
 
     :returns: list of tuples containing word/frequency pairs
     :rtype: list
@@ -30,32 +33,32 @@ def get_sorted_word_freqs(freq_dist, n, reverse=False):
 
     # Let's first turn the dictionary of word/frequency pairs into a
     # list of word/frequency tuples. This can be done automatically using
-    # the "items()" method, i.e., d.items(), where d is a dictionary.
+    # the "items()" method, i.e., "d.items()", where `d` is a dictionary.
     word_freq_tuples = # FILL IN
 
-    # Now, sort the list by the second value of every tuple (i.e., the
+    # Now sort the list by the second value of every tuple (i.e., the
     # frequency part)
     # To do this, we'll use the "sorted" function and define an anonymous
     # function, i.e., a "lambda" function, to define the sorting
     word_freq_tuples = sorted(word_freq_tuples, key=lambda x: x[1])
-    # This lambda function in the line above basically says, for each x in
-    # word_freq_tuples, give me the index 1 part (i.e., the second part of
-    # the tuple). This is what the sorting uses to sort
+    # This lambda function in the line above basically says, for each `x`
+    # in `word_freq_tuples`, give me the index 1 part (i.e., the second
+    # part of the tuple). This is what the sorting uses to sort.
 
-    # Now, we need to deal with whether or not we're sorting from lowest
+    # Now we need to deal with whether or not we're sorting from lowest
     # to highest or highest to lowest. Normally, it will be the former.
     if reverse: # Same as "if reverse == True"
 
         # Note: Either use the "reversed" function to reverse the list and
         # assign it back to itself or use the reverse slicing trick, which
-        # I really like for some reason. The reverse slicing trick goes
-        # like: [1, 2, 3, 4, 5][::-1] # ==> [5, 4, 3, 2, 1]. The "[::-1]"
-        # part is the slicer.
+        # I really like personally. The reverse slicing trick goes like:
+        # [1, 2, 3, 4, 5][::-1] # ==> [5, 4, 3, 2, 1]. The "[::-1]" part
+        # is what does the slicing.
         word_freq_tuples = # FILL IN
 
-    # Now, we need to return a list of first n samples in the list
-    # Hint: Use slicing to get the first n elements in the list and return
-    # only that part of the list
+    # Now we need to return a list of first `n` samples in the list.
+    # Hint: Use slicing to get the first `n` elements in the list and
+    # return only that part of the list.
     n_word_freq_tuples = # FILL IN
 
     return n_word_freq_tuples
@@ -71,11 +74,11 @@ def print_most_common(freq_dist):
     :returns: None
     """
 
-    # Call "get_sorted_word_freqs" with the correct parameters (is this one
-    # the one where the "reverse" parameter has to be specified or is it
-    # the other one?) AND REMEMBER TO PRINT OUT THE VALUES (use syntax that
-    # can be read by either Python using the print() function)
-    # Hint: Remember to use the "freq_dist" parameter that gets passed
+    # Call `get_sorted_word_freqs` with the correct parameters (is this
+    # the one where the `reverse` parameter has to be specified or is it
+    # the other one?) AND REMEMBER TO PRINT OUT THE VALUES (use syntax
+    # that can be read by either Python using the `print` function).
+    # Hint: Remember to use the `freq_dist` parameter that gets passed
     # in to this function!
     # FILL IN
 
@@ -90,9 +93,9 @@ def print_least_common(freq_dist):
     :returns: None
     """
 
-    # Call "get_sorted_word_freqs" with the correct parameters AND
+    # Call `get_sorted_word_freqs` with the correct parameters AND
     # REMEMBER TO PRINT OUT THE VALUES (use syntax that can be read by
-    # either Python using the print() function)
+    # either Python using the `print` function).
     # FILL IN
 
 
@@ -111,11 +114,11 @@ def get_freq_dist(word_list):
     word_freqs = {}
 
     # Iterate over the words in the word list and, for each word, check if
-    # it's in "word_freqs": if it is, add 1 to the number and, if it's
+    # it's in `word_freqs`: if it is, add 1 to the number and, if it's
     # not, add an entry for the word to the dictionary and then set it to
-    # 1
-    # Hint: To check whether a word is in the dictionary, use the "get()"
-    # method, i.e., word_freqs.get(word)
+    # 1.
+    # Hint: To check whether a word is in the dictionary, use the `get()`
+    # method, i.e., "word_freqs.get(word)"
     for word in word_list:
 
         # Check if the word is in the dictionary first; if it is, you can
@@ -169,7 +172,7 @@ def main():
     # In order to deal with it, I'm going to explain what I think you
     # should do and I want you to do it, but there's a twist. I want you
     # to implement it in a function which is actually above. It's called
-    # get_freq_dist() and it accepts a list of words. This is what
+    # `get_freq_dist` and it accepts a list of words. This is what
     # learning programming is all about. You find out what a function
     # needs and you build that so that you can use the function or you
     # are tasked with designing a function that is supposed to handle a
@@ -193,11 +196,6 @@ def main():
     # methods, so it should be finished first.
     print_most_common(word_freqs)
     print_least_common(word_freqs)
-
-    # Extra credit: Modify the functions called in the lines above so
-    # that they return lists of tuples instead. Then, call them and
-    # write their contents to two different files called
-    # "20_most_frequent_words.txt" and "20_least_frequent_words.txt".
 
 
 if __name__ == '__main__':
