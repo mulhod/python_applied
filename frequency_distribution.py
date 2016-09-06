@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 from __future__ import print_function
 
-# Main idea: Count the words in a file and make a frequency distribution
-# and then print out a list of the top 20 words and their frequencies
-# and the bottom 20 words and their frequencies.
+# Main idea: Count the words in a file and make a frequency
+# distribution and then print out a list of the top 20 words and their
+# frequencies and the bottom 20 words and their frequencies.
 
 # Start in the `main` method near the bottom of this file and work your
-# way down until you get to the part that directs you to come back up to
-# the functions/methods defined above the `main` method. It's common for
-# the `main` method to be defined last (but not necessary) and for other
-# functions/variables/etc. that the `main` method uses to be defined
-# before it.
+# way down until you get to the part that directs you to come back up
+# to the functions/methods defined above the `main` method. It's common
+# for the `main` method to be defined last (but not necessary) and for
+# other functions/variables/etc. that the `main` method uses to be
+# defined before it.
 
 # Text to read in: data/pride_and_prejudice.txt
 
@@ -32,28 +32,34 @@ def get_sorted_word_freqs(freq_dist, n, reverse=False):
     """
 
     # Let's first turn the dictionary of word/frequency pairs into a
-    # list of word/frequency tuples. This can be done automatically using
-    # the "items()" method, i.e., "d.items()", where `d` is a dictionary.
+    # list of word/frequency tuples. This can be done automatically
+    # using the "items()" method, i.e., "d.items()", where `d` is 
+    # dictionary.
     word_freq_tuples = # FILL IN
 
     # Now sort the list by the second value of every tuple (i.e., the
     # frequency part)
-    # To do this, we'll use the "sorted" function and define an anonymous
-    # function, i.e., a "lambda" function, to define the sorting
+    # To do this, we'll use the "sorted" function and define an
+    # anonymous function, i.e., a "lambda" function, to define the
+    # sorting
     word_freq_tuples = sorted(word_freq_tuples, key=lambda x: x[1])
-    # This lambda function in the line above basically says, for each `x`
-    # in `word_freq_tuples`, give me the index 1 part (i.e., the second
-    # part of the tuple). This is what the sorting uses to sort.
+    # This lambda function in the line above basically says, for each
+    # `x` in `word_freq_tuples`, give me the index 1 part (i.e., the
+    # second part of the tuple). This is what the sorting uses to sort.
 
     # Now we need to deal with whether or not we're sorting from lowest
     # to highest or highest to lowest. Normally, it will be the former.
     if reverse: # Same as "if reverse == True"
 
-        # Note: Either use the "reversed" function to reverse the list and
-        # assign it back to itself or use the reverse slicing trick, which
-        # I really like personally. The reverse slicing trick goes like:
-        # [1, 2, 3, 4, 5][::-1] # ==> [5, 4, 3, 2, 1]. The "[::-1]" part
-        # is what does the slicing.
+        # Note: Either use the "reversed" function to reverse the list
+        # and assign it back to itself or use the reverse slicing
+        # trick, which I really like personally. The reverse slicing
+        # trick goes like:
+        #
+        # >>> [1, 2, 3, 4, 5][::-1]
+        # [5, 4, 3, 2, 1].
+        #
+        # The `[::-1]` part is what does the slicing.
         word_freq_tuples = # FILL IN
 
     # Now we need to return a list of first `n` samples in the list.
@@ -75,9 +81,10 @@ def print_most_common(freq_dist):
     """
 
     # Call `get_sorted_word_freqs` with the correct parameters (is this
-    # the one where the `reverse` parameter has to be specified or is it
-    # the other one?) AND REMEMBER TO PRINT OUT THE VALUES (use syntax
-    # that can be read by either Python using the `print` function).
+    # the one where the `reverse` parameter has to be specified or is
+    # it the other one?) AND REMEMBER TO PRINT OUT THE VALUES (use
+    # syntax that can be read by either Python using the `print`
+    # function).
     # Hint: Remember to use the `freq_dist` parameter that gets passed
     # in to this function!
     # FILL IN
@@ -113,16 +120,16 @@ def get_freq_dist(word_list):
     # Make empty dictionary
     word_freqs = {}
 
-    # Iterate over the words in the word list and, for each word, check if
-    # it's in `word_freqs`: if it is, add 1 to the number and, if it's
-    # not, add an entry for the word to the dictionary and then set it to
-    # 1.
-    # Hint: To check whether a word is in the dictionary, use the `get()`
-    # method, i.e., "word_freqs.get(word)"
+    # Iterate over the words in the word list and, for each word, check
+    # if it's in `word_freqs`: if it is, add 1 to the number and, if
+    # it's not, add an entry for the word to the dictionary and then
+    # set it to 1.
+    # Hint: To check whether a word is in the dictionary, use the
+    # `get()` method, i.e., `word_freqs.get(word)`
     for word in word_list:
 
-        # Check if the word is in the dictionary first; if it is, you can
-        # just add 1 to its current frequency value
+        # Check if the word is in the dictionary first; if it is, you
+        # can just add 1 to its current frequency value
         if # FILL IN
             # FILL IN
 
@@ -137,47 +144,51 @@ def get_freq_dist(word_list):
 def main():
 
     # Read in the file
-    inf = open # finish the line, file's name is "pride-and-prejudice.txt"
+    inf = open # finish the line (the file's name is
+               # `pride-and-prejudice.txt`)
 
     # Let's make a list of the words that occur in the text
     # Note: Don't worry about commas and weird stuff in the text. Just
-    # assume that every line looks like "this is a line", no weird stuff.
+    # assume that every line looks like "this is a line", no weird
+    # stuff.
     words = []
     for line in inf.readlines():
 
         # Strip off spaces at the ends of the line (either beginning or
-        # end) and lower-case the line, but do it in only one line, hint:
-        # use the "strip()" method and the "lower()" method and chain them
-        # together
+        # end) and lower-case the line, but do it in only one line,
+        # hint: use the `strip()` method and the `lower()` method and
+        # chain them together
         line = # FILL IN
-        # Note: The line above starts off with "line = ...". This
+        # Note: The line above starts off with `line = ...`. This
         # will just change the value of the "line" variable, so we can
-        # keep reusing the same name and not need to create new variables
-        # for each step. Although, obviously, once it's been changed, its
-        # original value can't be recovered (unless you specifically save
-        # it to a different variable, for example).
+        # keep reusing the same name and not need to create new
+        # variables for each step. Although, obviously, once it's been
+        # changed, its original value can't be recovered (unless you
+        # specifically save it to a different variable, for example).
 
         # Split line on whitespace to get actual words, hint: use the
-        # "split()" method
+        # `split()` method
         # Note: This will turn the string into a list of strings, so,
-        # after executing, "line" will be a list of strings, not a string.
+        # after executing, `line` will be a list of strings, not a
+        # string.
         line = # FILL IN
 
         # Add words to list of words
-        # Hint: use "extend()" method on the words list
-        # Question: Why can't you just use append() instead of extend()?
+        # Hint: Use `extend()` method on the words list
+        # Question: Why can't you just use `append()` instead of
+        # `extend()`?
         # FILL IN
 
     # Ok, now we got a big, big list of words
     # In order to deal with it, I'm going to explain what I think you
-    # should do and I want you to do it, but there's a twist. I want you
-    # to implement it in a function which is actually above. It's called
-    # `get_freq_dist` and it accepts a list of words. This is what
-    # learning programming is all about. You find out what a function
-    # needs and you build that so that you can use the function or you
-    # are tasked with designing a function that is supposed to handle a
-    # thing like a list and do something like get the frequencies of all
-    # the items. So, you'll do that now.
+    # should do and I want you to do it, but there's a twist. I want
+    # you to implement it in a function which is actually above. It's
+    # called `get_freq_dist` and it accepts a list of words. This is
+    # what learning programming is all about. You find out what a
+    # function needs and you build that so that you can use the
+    # function or you are tasked with designing a function that is
+    # supposed to handle a thing like a list and do something like get
+    # the frequencies of all the items. So, you'll do that now.
     freq_dist = get_freq_dist(words)
 
     # Now, for the last part

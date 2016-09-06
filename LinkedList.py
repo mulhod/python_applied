@@ -6,20 +6,20 @@ In this exercise, follow along with text below sequentially instead of
 going straight to the `main` method. The real work is going to take
 place outside `main`.
 
-Now that you've used things like lists and dictionaries in Python, i.e.,
-"collections" or "containers" of "objects", I want to get more
+Now that you've used things like lists and dictionaries in Python,
+i.e., "collections" or "containers" of "objects", I want to get more
 fundamental for a second. Let's think about what, for example, a list
 really is.
 
-Thought Experiment (spend a few minutes before moving on): If you wanted
-to create a list in Python, you would just write something like,
+Thought Experiment (spend a few minutes before moving on): If you
+wanted to create a list in Python, you would just write something like,
 "l = []", and then start to append items or extend the list, etc. But,
 what if you were asked to make a list and not use the brackets (i.e.,
-don't use Python's built-in list type or any other container for objects
-that Python provides, such as dictionaries, etc.)? Think about how you
-might try to represent the idea of a list if you couldn't actually make
-a Python list. A really naive way of doing it would be to make variables
-to store each value, i.e.,
+don't use Python's built-in list type or any other container for
+objects that Python provides, such as dictionaries, etc.)? Think about
+how you might try to represent the idea of a list if you couldn't
+actually make a Python list. A really naive way of doing it would be to
+make variables to store each value, i.e.,
 
 >>> first = 5
 >>> second = 4
@@ -34,23 +34,23 @@ A key building block in computer science is the concept of a linked
 list, i.e., a collection of objects whose elements are linked together
 so as to form a representation of a list. For example, consider the
 situation above where we had defined the `first`, `second`, and `third`
-variables. Imagine that each of these variables actually stored not only
-a value, but also a "link", i.e., `first` would store its value and a
-link to `second`, `second` would store its value and a link to `third`,
-and `third` would store its value and a link whose value was None (since
-it's the last element). This is the basic idea behind a linked list.
-This assignment will be about making a linked list implementation and
-using it rather than Python's own list implementation (which is much
-better and faster but is built utimately using the same kind of
-implementation at some deep level).
+variables. Imagine that each of these variables actually stored not
+only a value, but also a "link", i.e., `first` would store its value
+and a link to `second`, `second` would store its value and a link to
+`third`, and `third` would store its value and a link whose value was
+`None` (since it's the last element). This is the basic idea behind a
+linked list. This assignment will be about making a linked list
+implementation and using it rather than Python's own list
+implementation (which is much better and faster but is built utimately
+using the same kind of implementation at some deep level).
 
 What we need first is to create a custom type of "object" that will
 represent a "node" in the list. Let's call it `Node`. This object will
-have a couple attributes that can be changed: a `value` attribute (which
-will store the value of list element, i.e., 5.8 or 19 or "the") and a
-`next_node` attribute, which will store a reference to the next node (if
-one exists). Below I will define a class for use in this assignment just
-to start it off.
+have a couple attributes that can be changed: a `value` attribute
+(which will store the value of list element, i.e., 5.8 or 19 or "the")
+and a `next_node` attribute, which will store a reference to the next
+node (if one exists). Below I will define a class for use in this
+assignment just to start it off.
 """
 
 class Node:
@@ -59,26 +59,26 @@ class Node:
         self.next_node = next_node
 
 """
-The `__init__` method is a required method (not technically, but for our
-purposes, let's just say it is) that you have to define for a Python
-class. It gets called when an object of type `Node` is instantiated. A
-`value` for the node and a reference to the following node can be passed
-in, but both are technically optional (when you want to give a default
-value to a parameter, you can specify the default value via
-`value=None`, for example, in the function signature). What would happen
-if I just created an object of type `Node` via "a = Node()"? What would
-`a`'s `value` attribute be equal to (i.e., `a.value`)? And what would
-`a.next_node` be equal to? Both would be equal to None since I did not
-specify a value for either parameter. With this implementation of
-`Node`, I could execute the following:
+The `__init__` method is a required method (not technically, but for
+our purposes, let's just say it is) that you have to define for a
+Python class. It gets called when an object of type `Node` is
+instantiated. A value for the node and a reference to the following
+node can be passed in, but both are technically optional (when you want
+to give a default value to a parameter, you can specify the default
+value via `value=None`, for example, in the function signature). What
+would happen if I just created an object of type `Node` via "a =
+Node()"? What would `a`'s `value` attribute be equal to (i.e.,
+`a.value`)? And what would `a.next_node` be equal to? Both would be
+equal to `None` since I did not specify a value for either parameter.
+With this implementation of `Node`, I could execute the following:
 
 >>> third = Node(value=7.2, next_node=None)
 >>> second = Node(value=6.7, next_node=third)
 >>> first = Node(value=1.0, next_node=second)
 
 This gives us a basic "linked list". As long as I have a reference to
-the first element, I can traverse the list to get to the other elements.
-For example:
+the first element, I can traverse the list to get to the other
+elements. For example:
 
 >>> i = 0
 >>> current_node = first
@@ -103,20 +103,20 @@ This would print out the following:
 Now that we have a class to represent each node in the linked list,
 there are just a couple other points to mention before implementing the
 actual linked list class. Firstly, it is customary to implement a sort
-of "header" node, which can be understood as a node that does not have a
-value and whose only function is to point to the "real" first node. When
-passing around a reference to a linked list, it will be necessary to
-figure out where to start. Next, the implementation of `LinkedList` will
-have to contain many of the methods for doing things like adding
-elements to the list, deleting them, etc., that make it useful as a data
-structure. The main part of this assignment will be to extend the
-`LinkedList` class below to add functionality to it and then to use this
-functionality in a real program. I will start off the implementation by
-making the `__init__` method and some other methods and then I will add
-so-called "stub" methods (unimplemented methods) that you will have to
-fill out yourself. Read all of the code and documentation for
-`LinkedList`, familiarize yourself with how it works, and fill in the
-sections that call for it.
+of "header" node, which can be understood as a node that does not have
+a value and whose only function is to point to the "real" first node.
+When passing around a reference to a linked list, it will be necessary
+to figure out where to start. Next, the implementation of `LinkedList`
+will have to contain many of the methods for doing things like adding
+elements to the list, deleting them, etc., that make it useful as a
+data structure. The main part of this assignment will be to extend the
+`LinkedList` class below to add functionality to it and then to use
+this functionality in a real program. I will start off the
+implementation by making the `__init__` method and some other methods
+and then I will add so-called "stub" methods (unimplemented methods)
+that you will have to fill out yourself. Read all of the code and
+documentation for `LinkedList`, familiarize yourself with how it works,
+and fill in the sections that call for it.
 
 To view a diagram of a linked list, check out the following URL:
 
@@ -130,34 +130,35 @@ there is no next node).
 
 Implementing the linked list data structure, however, is not just about
 implementing the structure itself as it is about implementing the ways
-that the data structure can be interacted with. In other words, what use
-is a linked list implementation if you can't add new data to it? Or if
-you can't remove data from it? Or find data in it? As you will see
+that the data structure can be interacted with. In other words, what
+use is a linked list implementation if you can't add new data to it? Or
+if you can't remove data from it? Or find data in it? As you will see
 below, the bulk of this exercise is implementing the interface between
 the user and the data structure. This will require a thorough
 understanding of the linked list structure, so please study the diagram
 linked to above and study the `Node` class and the idea of a "header"
-node. All of this will be important as we implement the functionality of
-the linked list class.
+node. All of this will be important as we implement the functionality
+of the linked list class.
 
-Before we get to that part, I want to take a second to just outline what
-we need to do (and it's a little open-ended, so bear with me). What do
-you think the main things are that you would need to be able to do in
-order for the linked list implementation to be worthwhile? Well, the
-obvious things that we need to be able to do are inserting and removing
-elements. With Python's `list` type, elements can be `append`ed onto the
-end, `extend`ed from the end, `insert`ed at particular indices,
-`pop`ped off the end, and `del`eted. So, we should implement an `append`
-method that will append an element to the end of the list, perhaps. This
-will allow us to construct a linked list starting with an empty list,
-i.e., just ceate one and then start appending elements to it just like
-with a Python `list`. Let's also implement a `pop` method that removes
-an element from the end of the list and returns its value. In fact,
-maybe we should have two `pop` methods, one for popping elements off the
-end and the other for popping elements off the beginning. Furthermore,
-it would be nice to remove an element from index or to remove a
-particular value wherever it occurs. So, this will all be decided during
-our implementation of the linked list class.
+Before we get to that part, I want to take a second to just outline
+what we need to do (and it's a little open-ended, so bear with me).
+What do you think the main things are that you would need to be able to
+do in order for the linked list implementation to be worthwhile? Well,
+the obvious things that we need to be able to do are inserting and
+removing elements. With Python's `list` type, elements can be
+`append`ed onto the end, `extend`ed from the end, `insert`ed at
+particular indices, `pop`ped off the end, and `del`eted. So, we should
+implement an `append` method that will append an element to the end of
+the list, perhaps. This will allow us to construct a linked list
+starting with an empty list, i.e., just ceate one and then start
+appending elements to it just like with a Python `list`. Let's also
+implement a `pop` method that removes an element from the end of the
+list and returns its value. In fact, maybe we should have two `pop`
+methods, one for popping elements off the end and the other for popping
+elements off the beginning. Furthermore, it would be nice to remove an
+element from index or to remove a particular value wherever it occurs.
+So, this will all be decided during our implementation of the linked
+list class.
 
 - Notes
   1. In Python classes, most methods/functions will take a first
@@ -165,9 +166,9 @@ our implementation of the linked list class.
      object, for example, I did not need to specify `self` even though
      it shows up in the method signature,
      "def __init__(self, value=None, next_node=None)". I could make a
-     new node just by executing "Node(value=3.4)" or even just "Node()".
-     The `self` argument refers to the instantiation of the class
-     itself. That's why in the method you see things like
+     new node just by executing "Node(value=3.4)" or even just
+     "Node()". The `self` argument refers to the instantiation of the
+     class itself. That's why in the method you see things like
      "self.value = value". This is setting the object's `value`
      attribute to the value of the passed-in parameter (also named)
      `value`. Don't think too much about what `self` is. Just use it as
@@ -225,8 +226,8 @@ class LinkedList:
         # passing in parameter values when instantiating the new node)
         new_node = Node(value=new_value, next_node=self.header_node.next_node)
 
-        # Now, set the value of `header_node`'s `next_node` attribute to
-        # point to this new node
+        # Now, set the value of `header_node`'s `next_node` attribute
+        # to point to this new node
         self.header_node.next_node = new_node
 
 
@@ -240,11 +241,11 @@ class LinkedList:
         there is no need to traverse the list to find the last node: it
         simply reassigns the header node's `next_node` attribute to
         point to it instead of the current first node and its own
-        `next_node` link points to the that formerly-first node, thereby
-        shifting that node one index forward (and all nodes that follow
-        it). If the list is empty, then this new node's link will
-        actually be None since it will be the one and only node (other
-        than the header node, of course) in the list.
+        `next_node` link points to the that formerly-first node,
+        thereby shifting that node one index forward (and all nodes
+        that follow it). If the list is empty, then this new node's
+        link will actually be None since it will be the one and only
+        node (other than the header node, of course) in the list.
         
         :param new_value: new value to append to list (inside a node)
         :type new_value: object (basically, this means any type)
@@ -259,9 +260,9 @@ class LinkedList:
             # list, in which case we have found the location we need to
             # modify
             # Note: This would even work for an empty linked list since
-            # the value of `header_node`'s `next_node` attribute is None
-            # until it's changed by adding nodes to the list (i.e., by
-            # using this method, for example).
+            # the value of `header_node`'s `next_node` attribute is
+            # `None` until it's changed by adding nodes to the list
+            # (i.e., by using this method, for example).
             if current_node.next_node is None:
 
                 # Make a new node with the given value and set
@@ -281,9 +282,9 @@ class LinkedList:
 
     def find_index_of_value(self, value_to_find):
         """
-        Find the index of the first occurrence of the given value in the
-        list. If it is not found, return -1 to signify that the value
-        was not found.
+        Find the index of the first occurrence of the given value in
+        the list. If it is not found, return -1 to signify that the
+        value was not found.
 
         :param value_to_find: value to look for in the elements of the
                               linked list
@@ -295,8 +296,9 @@ class LinkedList:
         """
 
         # Let's first check to see if the list is empty by calling the
-        # object's `is_empty` function, which simply looks to see if the
-        # object's `header_node`'s `value` attribute is equal to None
+        # object's `is_empty` function, which simply looks to see if
+        # the object's `header_node`'s `value` attribute is equal to
+        # `None`
         if ### FILL IN:
             return ### FILL IN (i.e., what value should be returned?)
 
@@ -323,8 +325,8 @@ class LinkedList:
 
             # Move forward one node and increment the counter
             # Note: Notice that I am not using an `else` statement here
-            # (or even above after the second `if` block). Why/how can I
-            # do this? The reason is that the `if` condition, if met,
+            # (or even above after the second `if` block). Why/how can
+            # I do this? The reason is that the `if` condition, if met,
             # would lead to a situation where the code below it would
             # never be executed. Thus, logically, there is no need to
             # put an `else` statement. This is naturally an `else`
@@ -337,8 +339,8 @@ class LinkedList:
     # be used in certain very useful ways if they are implemented. For
     # example, `__len__` is one of these so-called magic functions. If
     # you create a custom class (as we are doing here), implementing a
-    # `__len__` function will mean that we will be able to call `len` on
-    # an object of type `LinkedList`. For example, consider the code
+    # `__len__` function will mean that we will be able to call `len`
+    # on an object of type `LinkedList`. For example, consider the code
     # below:
     #
     # >>> x = LinkedList()
@@ -353,19 +355,19 @@ class LinkedList:
     # different types of objects (actually, any object for which
     # `__len__` is implemented). It's nice to be able to print out the
     # length of a list or the number of elements in a set or the number
-    # of keys in a dictionary, etc. But, we could implement `__len__` to
-    # do something weird, like return the value 67 no matter what. This
-    # would be kind of dumb, but it would be possible. The point is just
-    # to demonstrate this capability in Python. Other magic methods
-    # include `__add__` (which allow objects to be added together via
-    # the `+` operator), `__sub__` (same thing, but with `-`),
-    # `__mult__` (same thing, but with `*`), etc. Below I want you to
-    # implement the `__len__` function. Simply count the number of
-    # elements by iterating until you get to the end and return that
+    # of keys in a dictionary, etc. But, we could implement `__len__`
+    # to do something weird, like return the value 67 no matter what.
+    # This would be kind of dumb, but it would be possible. The point
+    # is just to demonstrate this capability in Python. Other magic
+    # methods include `__add__` (which allow objects to be added
+    # together via the `+` operator), `__sub__` (same thing, but with
+    # `-`), `__mult__` (same thing, but with `*`), etc. Below I want
+    # you to implement the `__len__` function. Simply count the number
+    # of elements by iterating until you get to the end and return that
     # number. I am going to implement another magic method here called
     # `__str__`, which allows you to specify the way the object should
     # be "printed", i.e., how you want to represent it. Let's use
-    # double braces to distinguish objects of type LinkedList from
+    # double braces to distinguish objects of type `LinkedList` from
     # objects that are just regular Python lists.
     def __len__(self):
         """
@@ -377,16 +379,16 @@ class LinkedList:
         """
 
         ### IMPLEMENT THIS METHOD
-        # Hint: Check if list is empty. If so, return 0. Otherwise, make
-        # a counter and set it to 0 and iterate over the list's elements
-        # until you get to the element whose `next_node` value is equal
-        # to None (i.e., the last element).
+        # Hint: Check if list is empty. If so, return 0. Otherwise,
+        # make a counter and set it to 0 and iterate over the list's
+        # elements until you get to the element whose `next_node` value
+        # is equal to `None` (i.e., the last element).
 
     def __str__(self):
         """
-        Return a string representation of the linked list object.
+        Return a string representation of the `LinkedList` object.
 
-        :returns: string representation of the linked list object
+        :returns: string representation of the `LinkedList` object
         :rtype: str
         """
 
@@ -462,13 +464,14 @@ class LinkedList:
 
         # Get the index of the value to remove
         ### HINT: Use the `find_index_of_value` function to 1) see if
-        ###       the value is even in the list (remember, that function
-        ###       will return -1 if it can't find the value in the list)
-        ###       and 2) get the index of the value in the list.
+        ###       the value is even in the list (remember, that
+        ###       function will return -1 if it can't find the value in
+        ###       the list) and 2) get the index of the value in the
+        ###       list.
         value_to_remove_index = ### FILL IN
 
-        # If `value_to_remove_index` is -1, that means the value was not
-        # found, so return False
+        # If `value_to_remove_index` is -1, that means the value was
+        # not found, so return False
         ### FILL IN
 
         # Now traverse the list until you get to the node that is
@@ -493,8 +496,8 @@ class LinkedList:
         Return a new `LinkedList` object that consists of the elements
         in the object's linked list that are from index `i` up to (but
         not including) index `j`. If `j` represents a value that is
-        larger than the length of the linked list, just include the rest
-        of the list.
+        larger than the length of the linked list, just include the
+        rest of the list.
 
         :param i: start index
         :type i: int
@@ -549,7 +552,7 @@ class LinkedList:
         # right before index `j` (or ending when the linked list ends,
         # whichever comes first).
 
-        subsequence_list = ### FILL IN (Hint: Make a new linked list object.)
+        subsequence_list = ### FILL IN (Hint: Make a new `LinkedList` object.)
         current_node = ### FILL IN
         current_index = 0
         while current_index < j:
@@ -571,10 +574,10 @@ class LinkedList:
 
         ### IMPLEMENT THIS
         # Hint: If there is at least one element to pop off the list,
-        # get the value of `header_node.next_node.value` and store it in
-        # a variable and then set `header_node.next_node` to
-        # `header_node.next_node.next_node`. Then, return the value that
-        # you stored in a variable. If the list is empty, raise an
+        # get the value of `header_node.next_node.value` and store it
+        # in a variable and then set `header_node.next_node` to
+        # `header_node.next_node.next_node`. Then, return the value
+        # that you stored in a variable. If the list is empty, raise an
         # error. I will do this check for you.
 
         # Check if the list is empty, in which case there's no node to
@@ -657,9 +660,9 @@ class LinkedList:
     >>> [1, 2, 3] + [4, 5, 6]      # [1, 2, 3, 4, 5, 6]
 
     Implementing the `__add__` method will not just enable this
-    capability in a general sense, it will actually enable a user to use
-    the `+` operator directly to add two linked lists together. Isn't
-    that so awesome?
+    capability in a general sense, it will actually enable a user to
+    use the `+` operator directly to add two linked lists together.
+    Isn't that so awesome?
     """
     def __add__(self, other_linked_list):
         """
@@ -687,15 +690,15 @@ def main():
 
     # 1. First we'll make a linked list and add some elements to it by
     #    using the `push` method. Recall that this means that each
-    #    time we add an element to the list it will be "pushed" onto the
-    #    beginning of the list, shifting any other elements back one
-    #    index. This is the opposite of the `append` method, which does
-    #    the same thing Python lists' `append` method does.
+    #    time we add an element to the list it will be "pushed" onto
+    #    the beginning of the list, shifting any other elements back
+    #    one index. This is the opposite of the `append` method, which
+    #    does the same thing Python lists' `append` method does.
     linked_list_1 = LinkedList()
 
     # For each number in the range from 0 up to (but not including) 7,
-    # push the number onto the beginning of our (currently) empty linked
-    # list
+    # push the number onto the beginning of our (currently) empty
+    # linked list
     for x in range(7):
         linked_list_1.push(x)
 
@@ -707,8 +710,8 @@ def main():
     print("linked_list_1 = {}".format(str(linked_list_1)))
 
     # Now let's remove some elements from it and add some elements to
-    # the beginning or end of it depending on whether those elements are
-    # even or odd
+    # the beginning or end of it depending on whether those elements
+    # are even or odd
     print("Removing elements from linked_list_1 and adding some others to "
           "it...")
     linked_list_1.remove_value(3)
@@ -723,9 +726,9 @@ def main():
     print("Length of linked_list_1: {}".format(len(linked_list_1)))
     print("linked_list_1 = {}".format(str(linked_list_1)))
 
-    # 2. Now let's make a big linked list that includes words instead of
-    #    numbers. We'll then search for some values in it, remove some
-    #    values, get some subsequences, etc.
+    # 2. Now let's make a big linked list that includes words instead
+    #    of numbers. We'll then search for some values in it, remove
+    #    some values, get some subsequences, etc.
     linked_list_2 = LinkedList()
 
     with open('data/pride_and_prejudice.txt') as text_file:
@@ -764,17 +767,18 @@ def main():
     ### Repeat this for the following words: "small", "hate", "table",
     ### "plant", "stove", "yard", "umbrella", "jacket", "coffee". For
     ### each word, first print out the message "Searching linked_list_2
-    ### for the word 'x'..." where `x` refers to the word being searched
-    ### for. It is probably best if you do this in a for loop rather
-    ### than writing the same code 8 or 9 times. I'll start you off.
+    ### for the word 'x'..." where `x` refers to the word being
+    ### searched for. It is probably best if you do this in a for loop
+    ### rather than writing the same code 8 or 9 times. I'll start you
+    ### off.
     words = ["small", "hate", "table", "plant", "stove", "yard", "umbrella",
              "jacket", "coffee"]
     for word in words:
 
-        ### PRINT OUT THE MESSAGE INDICATING WHAT WORD IS BEING SEARCHED
-        ### FOR. THEN, SEARCH FOR THE WORD AND PRINT OUT THE INDEX AT
-        ### WHICH IT OCCURRED OR, IF IT DOESN'T OCCUR, PRINT OUT A
-        #### MESSAGE SAYING SO.
+        ### PRINT OUT THE MESSAGE INDICATING WHAT WORD IS BEING
+        ### SEARCHED FOR. THEN, SEARCH FOR THE WORD AND PRINT OUT THE
+        ### INDEX AT WHICH IT OCCURRED OR, IF IT DOESN'T OCCUR, PRINT
+        ### OUT A MESSAGE SAYING SO.
 
     # Now let's try the same thing but with some words that surely will
     # not show up (at least probably)
@@ -785,13 +789,14 @@ def main():
 
     # Now let's remove some words just for fun. Let's remove all
     # occurrences of the word "him". Since the `remove_value` function
-    # will remove the first occurrence of the passed-in value and return
-    # True or False (indicating whether a removal actually took place),
-    # we can just keep on trying to remove a word until the return value
-    # is False. Once that's the case, all instances of that word have
-    # been removed. Since "him" most definitely occurs in the text, we
-    # can skip the check to see if it occurs. If you would like to do
-    # this, you get some extra credit and a sticker.
+    # will remove the first occurrence of the passed-in value and
+    # return `True` or `False` (indicating whether a removal actually
+    # took place), we can just keep on trying to remove a word until
+    # the return value is `False`. Once that's the case, all instances
+    # of that word have been removed. Since "him" most definitely
+    # occurs in the text, we can skip the check to see if it occurs. If
+    # you would like to do this, you get some extra credit and a
+    # sticker.
     print("Removing all instances of the value 'him'...")
     while True:
 
@@ -831,11 +836,12 @@ def main():
     print("Length of linked_list_2: {}".format(len(linked_list_2)))
 
     # Finally, let's add two linked lists together to create a new one
-    # Specifically, add `part_of_linked_list_2` to `linked_list_1` using
-    # the `+` operator and assign the result to `linked_list_3` and
-    # print out the list and its length (like above)
+    # Specifically, add `part_of_linked_list_2` to `linked_list_1`
+    # using the `+` operator and assign the result to `linked_list_3`
+    # and print out the list and its length (like above)
     linked_list_3 = ### FILL IN
-    ### FILL IN THE CODE FOR PRINTING OUT `linked_list_3` and its length
+    ### FILL IN THE CODE FOR PRINTING OUT `linked_list_3` and its
+    ### length
 
     print("Program complete!")
 

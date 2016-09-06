@@ -25,23 +25,24 @@ with a slightly different name).
 ### NOTE: Whatever file you import from, it must be contained in the
 ###       same directory (and also you must run the Python program from
 ###       that directory). This is to ensure that this Python program
-###       can find the file and import stuff from it. Python will search
-###       the directory you're currently in by default.
+###       can find the file and import stuff from it. Python will
+###       search the directory you're currently in by default.
 
 from frequency_distribution import get_freq_dist, get_sorted_word_freqs
 
 """
 Notice how I was able to import from `frequency_distribution` (which is
 just the code that is in `frequency_distribution.py`) as if it were a
-module/library/package (whatever you want to call it). This is just like
-any import from the `sys` package or `re` (regular expressions), etc.
-There's a reason for this: Because it's the same exact thing. Somewhere
-there are files or packages named `sys` or `sys.py` and `re` or `re.py`.
-When importing functions/methods from these packages, it's the same
-exact thing as importing from any module that you create yourself (as
-we are doing now with `frequency_distribution.py`). We can either import
-`frequency_distribution` as a module directly (and then have access to
-code within this module, via `frequency_distribution.get_freq_dist` or
+module/library/package (whatever you want to call it). This is just
+like any import from the `sys` package or `re` (regular expressions),
+etc. There's a reason for this: Because it's the same exact thing.
+Somewhere there are files or packages named `sys` or `sys.py` and `re`
+or `re.py`. When importing functions/methods from these packages, it's
+the same exact thing as importing from any module that you create
+yourself (as we are doing now with `frequency_distribution.py`). We can
+either import `frequency_distribution` as a module directly (and then
+have access to code within this module, via
+`frequency_distribution.get_freq_dist` or
 `frequency_distribution.get_sorted_word_freqs`, for example) or we can
 import certain functions or methods, etc., from the module so that we
 can reference them directly without needing to include
@@ -50,8 +51,8 @@ functions to suit our purposes. Let's say that we wanted to also import
 a function that just happened to also be named `get_freq_dist` from
 another module (there's nothing stopping anyone from defining functions
 that conflict in name with functions defined in other places). Maybe to
-keep things straight, we'll call the first one `get_freq_dist_1` and the
-second one `get_freq_dist_2`:
+keep things straight, we'll call the first one `get_freq_dist_1` and
+the second one `get_freq_dist_2`:
 
 >>> from frequency_distribution import get_freq_dist as get_freq_dist_1
 >>> from other_module_that_i_didnt_write import get_freq_dist as get_freq_dist_2
@@ -63,10 +64,10 @@ This exercise will also introduce you to the concept of arguments. It's
 often helpful when writing a program to provide a way to interact with
 the program. Providing arguments to a script when running it is one way
 of doing this. In this task, you will pass in a list of one or more
-text file paths to the script and it will process each text provided. If
-no text paths are provided or the text file paths are not valid paths,
-then an exception (i.e., error) will be raised and the program will
-stop.
+text file paths to the script and it will process each text provided.
+If no text paths are provided or the text file paths are not valid
+paths, then an exception (i.e., error) will be raised and the program
+will stop.
 
 Go down to the `main` method and follow along with the comments until
 you are directed elsewhere.
@@ -119,8 +120,8 @@ class TextProcessing:
         self.text_path = text_path
 
         # Let's create some other attributes, but leave their values
-        # assigned to None for now (their value will be computed as part
-        # of this object's other methods)
+        # assigned to None for now (their value will be computed as
+        # part of this object's other methods)
         self.word_list = None
         self.freq_dist = None
         self.num_words = None
@@ -157,11 +158,11 @@ class TextProcessing:
             for word in line.split():
                 self.word_list.append(word)
 
-    # The next thing we want to do is design functions that will process
-    # the data. Let's create one that makes a frequency distribution.
-    # And, what do you know, we actually have a frequency distribution
-    # function that we made in the last exercise. All we need to do is
-    # create a wrapper around it.
+    # The next thing we want to do is design functions that will
+    # process the data. Let's create one that makes a frequency
+    # distribution. And, what do you know, we actually have a frequency
+    # distribution function that we made in the last exercise. All we
+    # need to do is create a wrapper around it.
     def get_freq_dist(self):
         """
         Use the imported `get_freq_dist` to get the frequency
@@ -187,7 +188,8 @@ class TextProcessing:
         # Use `self.word_list` to compute the number of unique words
         # Hint: Use `set()` and take the length of it
         # Another way to do it would be to get the length of
-        # `self.freq_dist`, which will count the keys in the dictionary.
+        # `self.freq_dist`, which will count the keys in the
+        # dictionary.
         self.num_unique_words = ### FILL IN
 
     # Get the top 20 words (words only) in terms of frequency
@@ -201,12 +203,25 @@ class TextProcessing:
         # Get the top 20 words by calling the `get_sorted_word_freqs`
         # function defined in the last assignment, which has already
         # been imported here and can be used directly.
+        # NOTE: Remember that the signature of the
+        # `get_sorted_word_freqs` function defined in the previous
+        # assignment takes 2 required positional arguments: 1) a
+        # frequency distribution dictionary that maps words to their
+        # frequencies and a value named `n`, and 2) an integer value
+        # that tells the function how many results to return. The last
+        # argument, named `reverse`, is optional. It has a default
+        # value (`False`) that tells the function to return results
+        # that are the most frequent. While this argument has a default
+        # value and need not be specified, it can be specified by
+        # either including the value directly in the third position,
+        # e.g. `False`, or by providing a key/value, e.g.
+        # `reverse=False` in the call to the function. 
         top_20_word_and_frequency_tuples = ### FILL IN
 
-        # The code below gets the words out of the word/frequency tuples
-        # contained in `top_20_word_and_frequency_tuples` computed
-        # above. It uses a "list comprehension". Try to think about what
-        # the list comprehension actually does.
+        # The code below gets the words out of the word/frequency
+        # tuples contained in `top_20_word_and_frequency_tuples`
+        # computed above. It uses a "list comprehension". Try to think
+        # about what the list comprehension actually does.
         self.top_20_words = [word for (word, frequency)
                              in top_20_word_and_frequency_tuples]
 
@@ -239,8 +254,8 @@ def main():
     # Let's read in the arguments passed in. This can be done using
     # `sys.argv`, which is a list of arguments that the user supplies
     # when the program is run. `sys.argv[0]` is the name of the script,
-    # `sys.argv[1]` is the name of the first argument, `sys.argv[2]` the
-    # next, and so on.
+    # `sys.argv[1]` is the name of the first argument, `sys.argv[2]`
+    # the next, and so on.
     # NOTE: Always rememner that the first value in `sys.argv` is the
     #       name of the script itself.
 
@@ -251,9 +266,9 @@ def main():
 
     # Now, since we know there were arguments, let's get them and put
     # them in a list
-    # We'll also check that each one is a valid path. To do this, we can
-    # use the `os.path` module, which includes an `exists` function and
-    # some other very useful functions. Get used to these functions
+    # We'll also check that each one is a valid path. To do this, we
+    # can use the `os.path` module, which includes an `exists` function
+    # and some other very useful functions. Get used to these functions
     # since they are used all the time in real programs.
     from os.path import exists, abspath, join
     text_paths = []
@@ -266,8 +281,8 @@ def main():
     # needing to create a new list.
     for arg in sys.argv[1:]:
 
-        # Get the absolute path (deals with arguments that have relative
-        # paths, such as "../file.txt")
+        # Get the absolute path (deals with arguments that have
+        # relative paths, such as `../file.txt`)
         text_path = abspath(arg)
 
         # Check if the path exists
@@ -278,14 +293,14 @@ def main():
 
     # For each text, we want to get the frequency distribution and
     # calculate some other attributes. We could just iterate over the
-    # list of text paths and get the frequency distribution for each one
-    # and then compute each thing we want to compute and store all the
-    # values in some lists or dictionaries, but let's instead define a
-    # custom class to do all of this for us. While in this toy case
-    # creating a class to represent each text processing instance is not
-    # very necessary and maybe even more complicated than it really
-    # needs to be, it will introduce you to the idea of classes and
-    # objects (i.e., object-oriented programming).
+    # list of text paths and get the frequency distribution for each
+    # one and then compute each thing we want to compute and store all
+    # the values in some lists or dictionaries, but let's instead
+    # define a custom class to do all of this for us. While in this toy
+    # case creating a class to represent each text processing instance
+    # is not very necessary and maybe even more complicated than it
+    # really needs to be, it will introduce you to the idea of classes
+    # and objects (i.e., object-oriented programming).
     # Go up to the section above the `main` method where the
     # `TextProcessing` class is defined and follow along with the
     # comments and implement the class. Then, come back down here where
@@ -327,14 +342,15 @@ def main():
     # Let's iterate over the `TextProcessing` objects
     for text in texts:
 
-        # Create a string that has the data indicated by the header line
-        # and write it to `output_file`
-        # There are many ways to do this, but the way I chose is to just
-        # create an output string (for the line) with the first value,
-        # then add a tab and then the next value, and so on until we're
-        # finished. Remember to add a newline ("\n") at the end of the
-        # line. You could choose to do all of this in one line (and it
-        # would probably make it simpler and easier to read.)
+        # Create a string that has the data indicated by the header
+        # line and write it to `output_file`.
+        # There are many ways to do this, but the way I chose is to
+        # just create an output string (for the line) with the first
+        # value, then add a tab and then the next value, and so on
+        # until we're finished. Remember to add a newline ("\n") at the
+        # end of the line. You could choose to do all of this in one
+        # line (and it would probably make it simpler and easier to
+        # read.)
         output_string = text.text_path
         output_string = output_string + '\t' + str(text.num_words)
         output_string = ### FILL IN THE REST AND REMEMBER THAT THE
